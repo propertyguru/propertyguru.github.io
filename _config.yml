@@ -1,0 +1,14 @@
+name: PropertyGuru Engineering
+url: https://propertyguru.github.io
+description: PropertyGuru's Engineering Blog
+author: PropertyGuru
+keywords:
+
+permalink: /:year/:month/:day/:title/
+paginate: 2
+highlighter: pygments
+
+gems:
+  - jekyll-sitemap
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'CNAME']
