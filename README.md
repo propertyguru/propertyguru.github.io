@@ -8,6 +8,7 @@
 $ gem install github-pages
 $ jekyll serve
 ```
+By default, jekyll local server will be running at [http://localhost:400](http://localhost:400)
 
 **Adding a new post**
 
