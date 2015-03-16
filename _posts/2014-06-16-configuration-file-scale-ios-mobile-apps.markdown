@@ -17,20 +17,20 @@ Sounds familiar?
 
 The way to go about is to create a non-binary configuration file that allows us to specifcy what we want in the app.
 
-![](http://media.tumblr.com/13eecb429e8915f4b7e0325b5013a565/tumblr_inline_n49k8h9ryQ1sdmkub.png)
+<img src="http://media.tumblr.com/13eecb429e8915f4b7e0325b5013a565/tumblr_inline_n49k8h9ryQ1sdmkub.png" class="img-responsive" />
 
 The most important principle is that no recompilation is needed when we scale our apps. In our team we’ve chosen to go with PList file as it is easy for developers to create one out of the box in XCode. Here’s the steps
 
 1. Create a PList from XCode  
-![](http://media.tumblr.com/db0c2e801616572c5e8c74bea96191e8/tumblr_inline_n49kfokByI1sdmkub.png)
+<img src="http://media.tumblr.com/db0c2e801616572c5e8c74bea96191e8/tumblr_inline_n49kfokByI1sdmkub.png" class="img-responsive" />
 
 2. Set up your features in a .plist  
-![](http://media.tumblr.com/70a1deba225168814a4e44b861142953/tumblr_inline_n49krhLHTO1sdmkub.png)
+<img src="http://media.tumblr.com/70a1deba225168814a4e44b861142953/tumblr_inline_n49krhLHTO1sdmkub.png" class="img-responsive" />
 
 3. Add the plist file into your main bundle.
 
 4. Use the following codes to read the contents of the plist as a NSDictionary  
-![](http://media.tumblr.com/0d3ff46eb8758f3d3107e216462fe91d/tumblr_inline_n49l36LRak1sdmkub.png)
+<img src="http://media.tumblr.com/0d3ff46eb8758f3d3107e216462fe91d/tumblr_inline_n49l36LRak1sdmkub.png" class="img-responsive" />
 
 5. In your app features, read the contents off the NSDictionary to determine how your feature should behave. Eg.
 - Should this feature be turned on?
