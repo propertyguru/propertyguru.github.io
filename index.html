@@ -5,13 +5,14 @@ title: PropertyGuru Engineering | Blog
 
 {% for post in paginator.posts %}
     <article>
-      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+      <h1><a href="{{ post.url }}">{{ post.title }}</a><br /><small>{{ post.summary }}</small></h1>
       <h3>
         <small>
           <i class="fa fa-calendar"></i>&nbsp;Posted on {{ post.date | date: "%b %d, %Y" }}
           {% if post.author %}
           by <a href="{{ post.author_link }}" target="_blank">{{ post.author }}</a>
           {% endif %}
+          {% include post_tags.html %}
         </small>
       </h3>
 

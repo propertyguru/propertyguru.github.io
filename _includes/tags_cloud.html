@@ -1,0 +1,23 @@
+<h1>Tags</h1>
+<div class="tag-cloud">
+{% assign tags = site.tags | sort %}
+{% for tag in tags %}
+  <a href="{{ tag | first | slugize }}" style="font-size: {{ tag | last | size | times: 100 | divided_by: site.tags.size | plus: 70  }}%">{{ tag | first }}</a>
+{% endfor %}
+</div>
+
+{% comment %}
+<div id="tags">
+{% for tag in site.tags %}
+  <div class="tags-group">
+    {% capture tag_name %}{{ tag | first }}{% endcapture %}
+    <a name="{{ tag_name | slugize }}" href="{{ tag_name }}/"><h2 id="#{{ tag_name | slugize }}">{{ tag_name }}</h2></a>
+    {% for post in site.tags[tag_name] %}
+    <article class="list-group">
+      <h4><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h4>
+    </article>
+    {% endfor %}
+  </div>
+{% endfor %}
+</div>
+{% endcomment %}

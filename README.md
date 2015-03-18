@@ -14,6 +14,7 @@ By default, jekyll local server will be running at [http://localhost:400](http:/
 **Adding a new post**
 
 Create a new file `yyyy-MM-dd-slugs.markdown` under [`_posts`](/_posts) with the following structure:
+
 ```markdown
 ---
 layout: post
@@ -31,7 +32,29 @@ echo "Hello World!";
 {% endhighlight %}
 ...
 ```
+
 The new blog will be generated under `_site`.
+
+**Update Tags**
+
+We **MUST** run this command every time after added new tag that never have before from last generated tag
+
+```sh
+$ rake generate:tag
+Creating tag file: tags/android.html
+Creating tag file: tags/jacoco.html
+Creating tag file: tags/coverage.html
+Creating tag file: tags/robolectric.html
+Creating tag file: tags/gradle.html
+Creating tag file: tags/testing.html
+Creating tag file: tags/tdd.html
+Creating tag file: tags/context.html
+Creating tag file: tags/mock.html
+Creating tag file: tags/patterns.html
+Creating tag file: tags/google-analytics.html
+Creating tag file: tags/unit-test.html
+Creating tag file: tags/google-tagmanager.html
+```
 
 **Jekyll & Github Pages documentations**
 
