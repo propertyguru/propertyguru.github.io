@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <article>
   <h1>{{ page.title }}<br/><small>{{ page.summary }}</small></h1>
   <h3>
@@ -9,6 +10,7 @@ layout: default
       {% if page.author %}
       by <a href="{{ page.author_link }}" target="_blank">{{ page.author }}</a>
       {% endif %}
+      {% include post_tags.html %}
     </small>
   </h3>
 
