@@ -29,6 +29,12 @@ $ ./gradlew test -PtestFilter=Activity
 
 The above command will execute all tests with class name following `*Activity*Test` pattern. No parameter will default to running all tests. A drawback I found with this approach is that if your pattern has no matches, Robolectric executes all tests instead of no test (since there are none).
 
+<div class="bs-callout bs-callout-primary">
+    <h4>Update (Mar 21st, 2015)</h4>
+    <p>Latest Robolectric Gradle plugin with support for Android Gradle plugin 1.1.0 allows one to filter tests by running <code>./gradlew testDebug --tests='*.MyTestClass'</code></p>
+    <p>For more information, see <a href="http://tools.android.com/tech-docs/unit-testing-support">Unit testing docs for Android Gradle plugin</a>.</p>
+</div>
+
 Another tip to speed up your test run is to tell Robolectric to parallelize your test run using more processes if possible:
 
 {% highlight groovy %}
