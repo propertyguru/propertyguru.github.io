@@ -79,8 +79,14 @@ end
 
 Now whenever the sandbox server receives a request, it will return a JSON response as saved under the `/responses/` folder:
 
-* GET `/v0/topstories.json` -> `/responses/v0/topstories/default.json`
-* GET `/v0/item/1.json` -> `/responses/v0/item/1.json` or `/responses/v0/item/default.json`
+{% highlight bash %}
+GET /v0/topstories.json
+-> /responses/v0/topstories/default.json
+
+GET /v0/item/1.json
+-> /responses/v0/item/1.json
+or /responses/v0/item/default.json
+{% endhighlight %}
 
 <div class="bs-callout bs-callout-info">
     <h4>Tip</h4>
@@ -111,8 +117,14 @@ end
 {% endhighlight %}
 Now when we want to test scenario 'empty', send a request to `/_sandbox/empty`, the subsequent requests will look for response under 'empty' dataset:
 
-* GET `/v0/topstories.json` -> `/responses/empty/v0/topstories/default.json`
-* GET `/v0/item/1.json` -> `/responses//empty/v0/item/1.json` or `/responses/empty/v0/item/default.json`
+{% highlight bash %}
+GET /v0/topstories.json
+-> /responses/empty/v0/topstories/default.json
+
+GET /v0/item/1.json
+-> /responses//empty/v0/item/1.json
+or /responses/empty/v0/item/default.json
+{% endhighlight %}
 
 To revert to the normal 'default' dataset, send a request to `/_sandbox/default`.
 
