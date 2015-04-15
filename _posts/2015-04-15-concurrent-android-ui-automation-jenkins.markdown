@@ -26,7 +26,7 @@ Jenkins slave is the first thing one needs to set up to prepare for [distributed
 
 By definition, a Jenkins slave is a computer that is set up to offload build tasks from the main computer that hosts Jenkins. In our case, the build task is automation test, while the 'computer' that runs it is a physical Android device. For this, all the slaves can be [running on the same machine](https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds#Distributedbuilds-RunningMultipleSlavesontheSameMachine) that have physical Android devices plugged in via USB cables, which allows ADB commands. The master Jenkins communicates with these Android agents via this machine.
 
-Below is our setup for a slave connecting to a Samsung S3.
+Below is our setup for a slave connecting to a **Samsung S3**.
 
 <img src="/assets/img/parallel-slave-1.png" class="img-responsive" />
 
@@ -38,7 +38,7 @@ As all slaves run on the same machine, it is recommended that different file sys
     <p>Slaves do not maintain important data (other than active workspaces of projects last built on it), so you can possibly set the slave workspace to a temporary directory. The only downside of doing this is that you may lose the up-to-date workspace if the slave is turned off.</p>
 </div>
 
-While separate FS roots and multi-processors allow concurrent Calabash executions, `ADB_DEVICE_ARG` environment variable is needed to instruct Calabash which device it should send ADB commands to, in case of multiple connected devices. Under the hood, Calabash automates UI via ADB commands. The value for this environment variable can be found via `adb devices` command. `ADB_DEVICE_ARG` should be set at node level via 'Environment variables' configuration, which will be then available at job level, as one device maps directly to one slave node.
+While separate FS roots and multi-processors allow concurrent Calabash executions, `ADB_DEVICE_ARG` environment variable is needed to instruct Calabash which device it should send ADB commands to, in case of multiple connected devices. Under the hood, Calabash automates UI via ADB commands. The value for this environment variable can be found via `adb devices` command. As one device maps directly to one slave node, `ADB_DEVICE_ARG` should be set at node level via 'Environment variables' configuration, which will be then available at job level.
 
 <div class="bs-callout bs-callout-primary">
     <h4>Environment variables</h4>
@@ -66,7 +66,7 @@ With our Jenkins slaves and slave group in place, we can now set up a Jenkins jo
 
 <img src="/assets/img/parallel-downstream-1.png" class="img-responsive" />
 
-By checking both 'Execute concurrent builds if necessary' and 'Restrict where this project can be run', we instruct the job to be able to be run concurrently, subject to node availability, using only nodes tagged with 'android-group'. The restriction is to ensure that only nodes with connected devices are used for automation, as we may have other nodes with no connected devices used for other purposes.
+By checking both 'Execute concurrent builds if necessary' and 'Restrict where this project can be run', we allow the job to be executed concurrently, subject to node availability, using only nodes tagged with 'android-group'. The restriction is to ensure that only nodes with connected devices are used for automation, as we may have other nodes with no connected devices used for other purposes.
 
 <div class="bs-callout bs-callout-primary">
     <h4>Execute concurrent builds if necessary</h4>
