@@ -53,4 +53,10 @@ public class Application extends android.app.Application {
 }
 {% endhighlight %}
 
+<div class="bs-callout bs-callout-primary">
+    <h4>Update (May 12th, 2015)</h4>
+    <p>From Google Play Serivces 7.0.3, <code>Logger</code> interface has been deprecated and one can only configure log level per device, by using <code>adb shell setprop log.tag.GAv4 &lt;log-level&gt;</code></p>
+    <p>For more information, see <a href="https://developer.android.com/reference/com/google/android/gms/analytics/Logger.html">API documentation</a>.</p>
+</div>
+
 With the above setup, Google Analytics will show verbose `GAV4` logging but not sending real hit to Google Analytics server except for your release builds, which I assume are only used for production. More advanced settings can be applied in similar fashion to configure different GA tracker per build type, or some other setups based on your needs.
