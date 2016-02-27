@@ -6,9 +6,10 @@ keywords:
 
 permalink: /:year/:month/:day/:title/
 paginate: 2
-highlighter: pygments
+highlighter: rouge
 
 gems:
   - jekyll-sitemap
+  - jekyll-paginate
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'CNAME']
