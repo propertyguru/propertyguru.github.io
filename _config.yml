@@ -12,4 +12,4 @@ gems:
   - jekyll-sitemap
   - jekyll-paginate
 
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'CNAME']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'CNAME', 'vendor']
