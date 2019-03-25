@@ -13,7 +13,7 @@ normal.
    * Copy the `.ovpn` file from the encrypted zip file to the `%userprofile%\OpenVPN\config` folder.
    * Right click on the OpenVPN tray icon, choose "Import file..." and select the sg-vpn-client.ovpn file from the encrypted zip
 file:  
-![OpenVPN Import file...](gist_PropertyGuru_VPN.md_images/OpenVPN%20Import%20file....png)
+![OpenVPN Import file...](OpenVPN%20Import%20file....png)
 5. Now when you right click on the OpenVPN tray icon, you will see a "Connect" item too:  
 ![OpenVPN Connect](https://propertyguru.github.io/gist_PropertyGuru_VPN.md_images/OpenVPN%20Connect.png)
 6. Repeat the above steps with `propertyguru-vpn-thailand.ovpn`.
