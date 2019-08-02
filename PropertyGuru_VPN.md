@@ -56,7 +56,7 @@ Follow openvpn protocol guide to setup VPN on macos as follows: http://www.vpnga
 3. Start the VPN connection ```sudo openvpn --config ~/propertyguru-vpn-singapore.ovpn``` (or use `propertyguru-vpn-thailand.ovpn`)
     
 ## Android
-1. Install the OpenVPN Connect app from the Play Store: https://play.google.com/store/apps/details?id=net.openvpn.openvpn
+1. Install the [OpenVPN Connect app from the Play Store](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
 2. TODO
 3. Profit!
 
