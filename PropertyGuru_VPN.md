@@ -8,7 +8,7 @@ Please add both the Singapore and Thailand config files, even if you intend to c
 Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform systems@propertyguru.com.sg to revoke the certificate.
 
 ## Windows
-1. Install OpenVPN from https://openvpn.net/community-downloads/.  
+1. Install OpenVPN from <https://openvpn.net/community-downloads/>.
 Choose `Windows installer (NSIS)`.  
 During the installation accept the default options, we don't need more than that, and less than that will probably not work.  
 2. Start the OpenVPN GUI, the icon was added to your desktop ![OpenVPN icon](icon-3.png)
@@ -48,7 +48,15 @@ The downside is that if we change the compression on the server, that will not m
 There are 2 ways to do it on MacOS. One is the GUI way, with Tunnelblick, and the other is to `brew install openvpn` and run it on the command line.
 
 ### Mac OS with Tunnelblick GUI
-Follow openvpn protocol guide to setup VPN on macos as follows: http://www.vpngate.net/en/howto_openvpn.aspx#mac
+Follow openvpn protocol guide to setup VPN on macos as follows: <http://www.vpngate.net/en/howto_openvpn.aspx#mac>
+
+Tunnelblick will show a warning:
+<blockquote>
+  This computer's apparent public IP address was not different after connecting to propertyguru-vpn-singapore. It is still W.X.Y.Z.
+  
+  This may mean that your VPN is not configured correctly.
+</blockquote>
+This is because we don't route everything over the VPN, only the traffic which goes to our internal network, and some public IPs, which have source IP rules. So just select `Do not warn about this again for any configuration` and press `OK`.
 
 ### MacOS with OpenVPN CLI
 1. Save the configuration file to `~`. Make sure it is readable only for your user since it contains private key.
