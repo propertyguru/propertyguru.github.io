@@ -5,9 +5,9 @@ When you want to connect to the PropertyGuru Singapore or Thailand office over V
 
 Please add both the Singapore and Thailand config files, even if you intend to connect to only one, as in case the VPN in one offices is down then it will be possible to use the other office as a fallback.
 
-Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform systems@propertyguru.com.sg to revoke the certificate.
+Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform <systems@propertyguru.com.sg> to revoke the certificate.
 
-The VPN email will also contain a mysql zip file, this is to set up a connection to our mysql servers based on https://github.com/propertyguru/guruconf/blob/master/documentation/MySQL/mysql-workbench.md. If you did not request mysql access, ignore it. This is a work in progress and the mysql zip is sent for every VPN request, even if you didn't request mysql access.
+The VPN email will also contain a mysql zip file, this is to set up a connection to our mysql servers based on <https://github.com/propertyguru/guruconf/blob/master/documentation/MySQL/mysql-workbench.md>. If you did not request mysql access, ignore it. This is a work in progress and the mysql zip is sent for every VPN request, even if you didn't request mysql access.
 
 ## Windows
 1. Install OpenVPN from <https://openvpn.net/community-downloads/>.
@@ -62,11 +62,11 @@ This is because we don't route everything over the VPN, only the traffic which g
 
 ## Android
 1. Install the [OpenVPN Connect app from the Play Store](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
-2. TODO Please help updating this guide by editing https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md
+2. TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
 3. Profit!
 
 ## iOS
-TODO Please help updating this guide by editing https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md
+TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
 
 Because apple store doesn't allow GPL the OpenVPN app doesn't have compression support. That means the VPN connection to the server will be successful, but no traffic can get through and the server log has a lot of `Bad LZO decompression header byte: 251`. This was worked around in the Thailand office by switching off compression for clients which don't support it. But the OpenVPN server version in Singapore is too old to be able to do it. The result is that currently it's not possible to connect to the Singapore VPN with iOS. But it's possible to connect to the Thailand VPN.
 
@@ -74,10 +74,10 @@ Because apple store doesn't allow GPL the OpenVPN app doesn't have compression s
 ### How to determine the VPN access was successful or not?
 A good way is to check the routing table. We push more than 100 routes over the VPN, so if you see a lot of routes, then the VPN connection was successful.
 
-Another way to verify is to try to open the staging site, because that is accessible only from the offices or over the VPN, for example https://www.staging.propertyguru.com.sg/. If you see the website and you are not in the office, then the VPN connection was successful. If you see `403 Forbidden`, then you are not accessing the page over the VPN.
+Another way to verify is to try to open the staging site, because that is accessible only from the offices or over the VPN, for example <https://www.staging.propertyguru.com.sg/>. If you see the website and you are not in the office, then the VPN connection was successful. If you see `403 Forbidden`, then you are not accessing the page over the VPN.
 
 ### What traffic is sent over the VPN?
-The list of static routes which we push from the VPN server can be found by looking for `push "route` in https://github.com/propertyguru/puppet/tree/master/modules/osg_uservpn/files/etc_openvpn. Additionally there are DNS names which get resolved every hour and pushed over the VPN connection too, those are in https://github.com/propertyguru/puppet/blob/master/modules/osg_uservpn/files/x-openvpn-scripts-client-connect-generate-dns-cache.
+The list of static routes which we push from the VPN server can be found by looking for `push "route` in <https://github.com/propertyguru/puppet/tree/master/modules/osg_uservpn/files/etc_openvpn>. Additionally there are DNS names which get resolved every hour and pushed over the VPN connection too, those are in <https://github.com/propertyguru/puppet/blob/master/modules/osg_uservpn/files/x-openvpn-scripts-client-connect-generate-dns-cache>.
 
 By default we only send traffic over the VPN which needs VPN. We don't set the default route to go over the VPN, so only traffic to the propertyguru websites should go over the VPN, the traffic to other websites will avoid the VPN. We don't want to slow down traffic to the rest of the internet by forcing it to go over the VPN. We also don't want unnecessary traffic to go over the office internet connections. But we don't prevent the VPN to be used as a default gateway, in case it's needed.
 
