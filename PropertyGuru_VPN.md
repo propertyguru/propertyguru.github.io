@@ -7,6 +7,8 @@ Please add both the Singapore and Thailand config files, even if you intend to c
 
 Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform systems@propertyguru.com.sg to revoke the certificate.
 
+The VPN email will also contain a mysql zip file, this is to set up a connection to our mysql servers based on https://github.com/propertyguru/guruconf/blob/master/documentation/MySQL/mysql-workbench.md. If you did not request mysql access, ignore it. This is a work in progress and the mysql zip is sent for every VPN request, even if you didn't request mysql access.
+
 ## Windows
 1. Install OpenVPN from <https://openvpn.net/community-downloads/>.
 Choose `Windows installer (NSIS)`.  
@@ -39,13 +41,13 @@ This needs at least Ubuntu 18.04 LTS Bionic. The NetworkManager version in Ubunt
 - [ ] All users may connect to this network
 7. Optional: NetworkManager 1.10.6 from Ubuntu Bionic does not support the `compress`, and ignores it. This is a problem because then the `push "compress lzo"` command from the server will also be ignored and the connection will fail. To work around this go to the `VPN` tab, click `Advanced...` and check:  
 - [x] Use LZO data compression `adaptive`  
-The downside is that if we change the compression on the server, that will not match the hardcoded value on the client any more, and the connection will fail. <!--- Check if it's fixed in the next Ubuntu release. -->
+The downside is that if we change the compression on the server, that will not match the hardcoded value on the client any more, and the connection will fail. <!-- Check if it's fixed in the next Ubuntu release. -->
 8. `Save` the new VPN connection  
 ![NetworkManager Save](NetworkManager%20Save%20Button.png)
 9. Repeat the above steps for the `propertyguru-vpn-thailand.ovpn` file.
 
 ## MacOS
-There are 2 ways to do it on MacOS. One is the GUI way, with Tunnelblick, and the other is to `brew install openvpn` and run it on the command line.
+The recommended way is to use Tunnelblick, as that gives a GUI status indicator to show when the VPN is connected. It's also possible to use the OpenVPN command line interface, but that has no status indicator, so it's less convenient.
 
 ### Mac OS with Tunnelblick GUI
 Follow openvpn protocol guide to setup VPN on macos as follows: <http://www.vpngate.net/en/howto_openvpn.aspx#mac>
@@ -58,17 +60,25 @@ Tunnelblick will show a warning:
 </blockquote>
 This is because we don't route everything over the VPN, only the traffic which goes to our internal network, and some public IPs, which have source IP rules. So just select `Do not warn about this again for any configuration` and press `OK`.
 
-### MacOS with OpenVPN CLI
-1. Save the configuration file to `~`. Make sure it is readable only for your user since it contains private key.
-2. Install OpenVPN ```brew install openvpn```
-3. Start the VPN connection ```sudo openvpn --config ~/propertyguru-vpn-singapore.ovpn``` (or use `propertyguru-vpn-thailand.ovpn`)
-    
 ## Android
 1. Install the [OpenVPN Connect app from the Play Store](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
-2. TODO
+2. TODO Please help updating this guide by editing https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md
 3. Profit!
 
 ## iOS
-TODO
+TODO Please help updating this guide by editing https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md
 
 Because apple store doesn't allow GPL the OpenVPN app doesn't have compression support. That means the VPN connection to the server will be successful, but no traffic can get through and the server log has a lot of `Bad LZO decompression header byte: 251`. This was worked around in the Thailand office by switching off compression for clients which don't support it. But the OpenVPN server version in Singapore is too old to be able to do it. The result is that currently it's not possible to connect to the Singapore VPN with iOS. But it's possible to connect to the Thailand VPN.
+
+## FAQ
+### How to determine the VPN access was successful or not?
+A good way is to check the routing table. We push more than 100 routes over the VPN, so if you see a lot of routes, then the VPN connection was successful.
+
+Another way to verify is to try to open the staging site, because that is accessible only from the offices or over the VPN, for example https://www.staging.propertyguru.com.sg/. If you see the website and you are not in the office, then the VPN connection was successful. If you see `403 Forbidden`, then you are not accessing the page over the VPN.
+
+### What traffic is sent over the VPN?
+The list of static routes which we push from the VPN server can be found by looking for `push "route` in https://github.com/propertyguru/puppet/tree/master/modules/osg_uservpn/files/etc_openvpn. Additionally there are DNS names which get resolved every hour and pushed over the VPN connection too, those are in https://github.com/propertyguru/puppet/blob/master/modules/osg_uservpn/files/x-openvpn-scripts-client-connect-generate-dns-cache.
+
+By default we only send traffic over the VPN which needs VPN. We don't set the default route to go over the VPN, so only traffic to the propertyguru websites should go over the VPN, the traffic to other websites will avoid the VPN. We don't want to slow down traffic to the rest of the internet by forcing it to go over the VPN. We also don't want unnecessary traffic to go over the office internet connections. But we don't prevent the VPN to be used as a default gateway, in case it's needed.
+
+For Linux NetworkManager to use the VPN for all traffic: open the VPN connection settings, and under `IPv4 Settings -> Routes...` switch off `Use this connection only for resources on its network`. This will add a default route over the VPN.
