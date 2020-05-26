@@ -1,7 +1,7 @@
 <!-- this file can be viewed online at https://propertyguru.github.io/PropertyGuru_VPN/ -->
 # VPN Client
 
-When you want to connect to the PropertyGuru Singapore or Thailand office over VPN from home or somewhere else.
+When you want to connect to the PropertyGuru Singapore or Thailand office over VPN from home or somewhere else. For the system level documentation see <https://propertyguru.atlassian.net/wiki/display/IOD/VPN+Infrastructure>.
 
 Please add both the Singapore and Thailand config files, even if you intend to connect to only one, as in case the VPN in one offices is down then it will be possible to use the other office as a fallback.
 
@@ -65,50 +65,20 @@ This is because we don't route everything over the VPN, only the traffic which g
 2. TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
 3. Profit!
 
-## iOS
-
-### Step 1
-
-Reach out to someone from the DevOps team from slack to get a VPN certificate. They need your phone model and OS name.
-
-
-
-### Step 2
-You will receive an email with zip files attached. THen, find the password in the slack channel “osg_uservpn.” Then download those and unzip.
-
-*** Suggest screenshotting the password, just in case because the channel will disappear in a few mins once you have read and changed to another screen.
-
-
-
-### Step 3
-Download “OpenVPN Connect” from the Appstore.
-
-
-
-### Step 4
-Connect your iPhone with your Mac. Open “Finder”, select your phone from the left panel. Then click “Files” from the upper top right.
-
-
-
-### Step 5
-Drag unzipped certificate files and drop into “OpenVPN”
-
-
-
-### Step 6
-Open the “OpenVPN” app from your phone. You will see the certificate that you just added. 
-Click the “Add” button.
-
-
-
------Done!!-----
-
-
-TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
+## Apple iOS phones
+1. Download “[OpenVPN Connect](https://apps.apple.com/th/app/openvpn-connect/id590379981)” from the Appstore.
+2. Connect your iPhone with your Mac. Open “Finder”, select your phone from the left panel. Then click “Files” from the upper top right.
+3. Drag unzipped certificate files and drop into “OpenVPN”
+4. Open the “OpenVPN” app from your phone. You will see the certificate that you just added. 
+5. Click the “Add” button.
 
 Because apple store doesn't allow GPL the OpenVPN app doesn't have compression support. That means the VPN connection to the server will be successful, but no traffic can get through and the server log has a lot of `Bad LZO decompression header byte: 251`. This was worked around in the Thailand office by switching off compression for clients which don't support it. But the OpenVPN server version in Singapore is too old to be able to do it. The result is that currently it's not possible to connect to the Singapore VPN with iOS. But it's possible to connect to the Thailand VPN.
 
 ## FAQ
+
+### Where is the password?
+The initial ZIP password sent over slack is an ephemeral message, it's not stored on the slack servers, or the slack client and disappears after slack disconnects. If the password disappears before it's used to unpack the ZIP file, then request a new one. If the person who sent the VPN certificate still has the SSH window open, it's possible to resend the password. Otherwise the certificate will be revoked and a new certificate will be sent.
+
 ### How to determine the VPN access was successful or not?
 A good way is to check the routing table. We push more than 100 routes over the VPN, so if you see a lot of routes, then the VPN connection was successful.
 
@@ -120,3 +90,6 @@ The list of static routes which we push from the VPN server can be found by look
 By default we only send traffic over the VPN which needs VPN. We don't set the default route to go over the VPN, so only traffic to the propertyguru websites should go over the VPN, the traffic to other websites will avoid the VPN. We don't want to slow down traffic to the rest of the internet by forcing it to go over the VPN. We also don't want unnecessary traffic to go over the office internet connections. But we don't prevent the VPN to be used as a default gateway, in case it's needed.
 
 For Linux NetworkManager to use the VPN for all traffic: open the VPN connection settings, and under `IPv4 Settings -> Routes...` switch off `Use this connection only for resources on its network`. This will add a default route over the VPN.
+
+## Improvements
+Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
