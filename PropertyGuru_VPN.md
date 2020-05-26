@@ -66,6 +66,36 @@ This is because we don't route everything over the VPN, only the traffic which g
 3. Profit!
 
 ## iOS
+
+Step 1
+Reach out to someone from the DevOps team from slack to get a VPN certificate. They need your phone model and OS name.
+
+
+Step 2
+You will receive an email with zip files attached. THen, find the password in the slack channel “osg_uservpn.” Then download those and unzip.
+
+*** Suggest screenshotting the password, just in case because the channel will disappear in a few mins once you have read and changed to another screen.
+
+
+Step 3
+Download “OpenVPN Connect” from the Appstore.
+
+
+Step 4
+Connect your iPhone with your Mac. Open “Finder”, select your phone from the left panel. Then click “Files” from the upper top right.
+
+
+Step 5
+Drag unzipped certificate files and drop into “OpenVPN”
+
+
+Step 6
+Open the “OpenVPN” app from your phone. You will see the certificate that you just added. 
+Click the “Add” button.
+
+-----Done!!-----
+
+
 TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
 
 Because apple store doesn't allow GPL the OpenVPN app doesn't have compression support. That means the VPN connection to the server will be successful, but no traffic can get through and the server log has a lot of `Bad LZO decompression header byte: 251`. This was worked around in the Thailand office by switching off compression for clients which don't support it. But the OpenVPN server version in Singapore is too old to be able to do it. The result is that currently it's not possible to connect to the Singapore VPN with iOS. But it's possible to connect to the Thailand VPN.
