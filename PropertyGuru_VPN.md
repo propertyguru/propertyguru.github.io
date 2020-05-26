@@ -67,29 +67,30 @@ This is because we don't route everything over the VPN, only the traffic which g
 
 ## iOS
 
-Step 1
+### Step 1
+
 Reach out to someone from the DevOps team from slack to get a VPN certificate. They need your phone model and OS name.
 
 
-Step 2
+### Step 2
 You will receive an email with zip files attached. THen, find the password in the slack channel “osg_uservpn.” Then download those and unzip.
 
 *** Suggest screenshotting the password, just in case because the channel will disappear in a few mins once you have read and changed to another screen.
 
 
-Step 3
+### Step 3
 Download “OpenVPN Connect” from the Appstore.
 
 
-Step 4
+### Step 4
 Connect your iPhone with your Mac. Open “Finder”, select your phone from the left panel. Then click “Files” from the upper top right.
 
 
-Step 5
+### Step 5
 Drag unzipped certificate files and drop into “OpenVPN”
 
 
-Step 6
+### Step 6
 Open the “OpenVPN” app from your phone. You will see the certificate that you just added. 
 Click the “Add” button.
 
