@@ -5,7 +5,7 @@ When you want to connect to the PropertyGuru Singapore or Thailand office over V
 
 Please add both the Singapore and Thailand config files, even if you intend to connect to only one, as in case the VPN in one offices is down then it will be possible to use the other office as a fallback.
 
-Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform <systems@propertyguru.com.sg> to revoke the certificate.
+Delete the zip file and the email after confirming the VPN connection works. The `.ovpn` files contain a secret which should not leave the device where it's being used. Also don't backup the `.ovpn` files. In case the file is lost because of reinstall, hardware failure or replacement, ask for a new VPN certificate. Do not copy the certificate to another device, ask for a separate certificate for each device. In case the device is stolen or lost, or the VPN is not being used any more, inform <systems-sg@propertyguru.com.sg> to revoke the certificate.
 
 The VPN email will also contain a mysql zip file, this is to set up a connection to our mysql servers based on <https://github.com/propertyguru/guruconf/blob/master/documentation/MySQL/mysql-workbench.md>. If you did not request mysql access, ignore it. This is a work in progress and the mysql zip is sent for every VPN request, even if you didn't request mysql access.
 
