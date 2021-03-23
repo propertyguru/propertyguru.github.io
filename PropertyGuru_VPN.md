@@ -46,6 +46,8 @@ The downside is that if we change the compression on the server, that will not m
 ![NetworkManager Save](NetworkManager%20Save%20Button.png)
 9. Repeat the above steps for the `propertyguru-vpn-thailand.ovpn` file.
 
+NetworkManager parses the openvpn configuration file and based on that creates a NetworkManager configuration file. The NetworkManager configuration is saved to `/etc/NetworkManager/system-connections/propertyguru-vpn-singapore.nmconnection` (and equivalent for Thailand). The certificates will be extracted from the ovpn file and placed in `$HOME/.cert/nm-openvpn/` and named `propertyguru-vpn-singapore-ca.pem` `propertyguru-vpn-singapore-cert.pem` and `propertyguru-vpn-singapore-key.pem` (and equivalent for Thailand).
+
 ## MacOS
 The recommended way is to use Tunnelblick, as that gives a GUI status indicator to show when the VPN is connected. It's also possible to use the OpenVPN command line interface, but that has no status indicator, so it's less convenient.
 
