@@ -93,5 +93,57 @@ By default we only send traffic over the VPN which needs VPN. We don't set the d
 
 For Linux NetworkManager to use the VPN for all traffic: open the VPN connection settings, and under `IPv4 Settings -> Routes...` switch off `Use this connection only for resources on its network`. This will add a default route over the VPN.
 
+### VPN not working after 2021-09-30
+If you got your VPN configuration file before 2021-09-21 and it stopped working exactly at 2021-09-30 22:01:15 SGT (21:01:15 ICT), then it's because of the [IdentTrust DST Root CA X3 certificate expiration](https://scotthelme.co.uk/lets-encrypt-old-root-expiration/).
+
+To verify if you are using the old CA certificate you can look at the `propertyguru-vpn-singapore.ovpn` and `propertyguru-vpn-thailand.ovpn` files and if you see this, then you have the old CA:
+```
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIDSjCCAjKgAwIBAgIQRK+wgNajJ7qJMDmGLvhAazANBgkqhkiG9w0BAQUFADA/
+```
+
+The easiest way to fix this is to request a new VPN certificate. If you don't want to wait for that and are comfortable with editing configuration files, then in the OpenVPN configuration file replace the text between `<ca>` and `</ca>` with the following:
+```
+<ca>
+-----BEGIN CERTIFICATE-----
+MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4
+WhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu
+ZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY
+MTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc
+h77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+
+0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U
+A5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW
+T8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH
+B5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC
+B5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv
+KBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn
+OlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn
+jh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw
+qHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI
+rU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV
+HRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq
+hkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL
+ubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ
+3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK
+NFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5
+ORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur
+TkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC
+jNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc
+oyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq
+4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA
+mRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d
+emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
+-----END CERTIFICATE-----
+</ca>
+```
+
+#### Explanation
+Our VPN server uses Let's Encrypt to get it's own TLS certificate. This is used by the VPN client to verify it's really talking to the PropertyGuru VPN servers, to avoid MiTM attacks. But since OpenVPN does not use the operating system's trusted CA certificates to verify the VPN server, we have to put the CA certificate which signed the Let's Encrypt certificate into the VPN configuration file. This certificate is different from the VPN client certificate, which is also in the configuration file, but in the `<cert>` tag. That has it's own expiration and is signed by a different CA.
+
+This issue was fixed on the VPN server in [commit fa5ecdd](https://github.com/propertyguru/puppet/commit/fa5ecdddb96726ff1590289006890c5ca6a9d4f7). VPN configuration files sent on 2021-09-21 (and later) already embed the new CA certificate and are not affected.
+
 ## Improvements
 Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
