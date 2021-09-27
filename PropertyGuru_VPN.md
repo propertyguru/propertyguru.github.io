@@ -102,12 +102,6 @@ For Linux NetworkManager to use the VPN for all traffic: open the VPN connection
 Under `WiFi & network` change `Private DNS` from `Private DNS provider hostname` to `Automatic`.
 ![](android_private_dns_mode.png)
 
-### Tunnelblick: IP address not different
-![](Tunnelblick%20public%20IP%20warning.jpg)
-> This computer's apparent public IP address was not different after connecting to propertyguru-vpn-singapore. It is still X.X.X.X.
-> This may mean that your VPN is not configured correctly.
-This is intended, we want to route over the VPN only the traffic which needs VPN (see above at (What traffic is sent over the VPN?)[#what-traffic-is-sent-over-the-vpn]).
-
 ### VPN not working after 2021-09-30
 If you got your VPN configuration file before 2021-09-21 and it stopped working exactly at 2021-09-30 22:01:15 SGT (21:01:15 ICT), then it's because of the [IdentTrust DST Root CA X3 certificate expiration](https://scotthelme.co.uk/lets-encrypt-old-root-expiration/).
 
