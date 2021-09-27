@@ -63,9 +63,14 @@ Tunnelblick will show a warning:
 This is because we don't route everything over the VPN, only the traffic which goes to our internal network, and some public IPs, which have source IP rules. So just select `Do not warn about this again for any configuration` and press `OK`.
 
 ## Android
+0. The default Android file manager is not able to unpack encrypted ZIP files, [Amaze File Manager](https://play.google.com/store/apps/details?id=com.amaze.filemanager) can be used instead
 1. Install the [OpenVPN Connect app from the Play Store](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
-2. TODO Please help updating this guide by editing <https://github.com/propertyguru/propertyguru.github.io/blob/master/PropertyGuru_VPN.md>
-3. Profit!
+2. Import Profile -> File -> Choose `propertyguru-vpn-singapore.ovpn`
+3. Don't forget to press the `Add` button at the top right of the `Profile successfully imported` page
+4. Press the big plus icon on the bottom right to import the other file
+5. Choose `propertyguru-vpn-thailand.ovpn`
+6. Press `Add` at top right
+7. The `Profiles` window should look like this now: ![](android_6_profiles_sg_th.jpg)
 
 ## Apple iOS phones
 1. Download “[OpenVPN Connect](https://apps.apple.com/th/app/openvpn-connect/id590379981)” from the Appstore.
@@ -92,6 +97,10 @@ The list of static routes which we push from the VPN server can be found by look
 By default we only send traffic over the VPN which needs VPN. We don't set the default route to go over the VPN, so only traffic to the propertyguru websites should go over the VPN, the traffic to other websites will avoid the VPN. We don't want to slow down traffic to the rest of the internet by forcing it to go over the VPN. We also don't want unnecessary traffic to go over the office internet connections. But we don't prevent the VPN to be used as a default gateway, in case it's needed.
 
 For Linux NetworkManager to use the VPN for all traffic: open the VPN connection settings, and under `IPv4 Settings -> Routes...` switch off `Use this connection only for resources on its network`. This will add a default route over the VPN.
+
+### Android: No internet connection after connecting to the VPN
+Under `WiFi & network` change `Private DNS` from `Private DNS provider hostname` to `Automatic`.
+![](android_private_dns_mode.png)
 
 ### VPN not working after 2021-09-30
 If you got your VPN configuration file before 2021-09-21 and it stopped working exactly at 2021-09-30 22:01:15 SGT (21:01:15 ICT), then it's because of the [IdentTrust DST Root CA X3 certificate expiration](https://scotthelme.co.uk/lets-encrypt-old-root-expiration/).
