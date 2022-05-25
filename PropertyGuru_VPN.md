@@ -57,6 +57,7 @@ Follow openvpn protocol guide to setup VPN on macos as follows: <http://www.vpng
 Tunnelblick will show a warning:
 <blockquote>
   This computer's apparent public IP address was not different after connecting to propertyguru-vpn-singapore. It is still W.X.Y.Z.  
+  
   This may mean that your VPN is not configured correctly.  
 </blockquote>
 This is because we don't route everything over the VPN, only the traffic which goes to our internal network, and some public IPs, which have source IP rules. So just select `Do not warn about this again for any configuration` and press `OK`.
@@ -76,7 +77,9 @@ This is because we don't route everything over the VPN, only the traffic which g
 The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
 <blockquote>
   There was an error attempting to connect to the selected server.  
+  
   Error message:  
+  
   OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed  
 </blockquote>
 
