@@ -72,6 +72,19 @@ This is because we don't route everything over the VPN, only the traffic which g
 6. Press `Add` at top right
 7. The `Profiles` window should look like this now: ![](android_6_profiles_sg_th.jpg)
 
+### OpenVPN Connect versions > 3.2.5
+The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
+> There was an error attempting to connect to the selected server.
+> Error message:
+> OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed
+
+Screenshots:
+[1](https://pgurus.slack.com/archives/C04T54SDP/p1651051200728679?thread_ts=1651047053.232299&cid=C04T54SDP)
+[2](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653023480660299?thread_ts=1653023462.549749&cid=C03E2GR4C6Q)
+[3](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653445008939279)
+Downgrading to the 3.2.5 version works: https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/
+Unfortunately also have to disable automatic updates for this app, otherwise it will get updated from the Play Store and the connection will fail again.
+
 ## Apple iOS phones
 1. Download “[OpenVPN Connect](https://apps.apple.com/th/app/openvpn-connect/id590379981)” from the Appstore.
 2. Connect your iPhone with your Mac. Open “Finder”, select your phone from the left panel. Then click “Files” from the upper top right.
