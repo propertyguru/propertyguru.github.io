@@ -70,7 +70,8 @@ This is because we don't route everything over the VPN, only the traffic which g
 4. Press the big plus icon on the bottom right to import the other file
 5. Choose `propertyguru-vpn-thailand.ovpn`
 6. Press `Add` at top right
-7. The `Profiles` window should look like this now: ![](android_6_profiles_sg_th.jpg)
+7. The `Profiles` window should look like this now:
+  ![](android_6_profiles_sg_th.jpg)
 
 ### OpenVPN Connect versions > 3.2.5
 The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
@@ -83,7 +84,7 @@ Screenshots:
 [2](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653023480660299?thread_ts=1653023462.549749&cid=C03E2GR4C6Q)
 [3](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653445008939279)
 
-Downgrading to the 3.2.5 version works: https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/
+Downgrading to the 3.2.5 version works: [https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/](https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/)
 Unfortunately also have to disable automatic updates for this app, otherwise it will get updated from the Play Store and the connection will fail again.
 
 ## Apple iOS phones
