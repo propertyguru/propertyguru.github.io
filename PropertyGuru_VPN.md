@@ -56,9 +56,8 @@ Follow openvpn protocol guide to setup VPN on macos as follows: <http://www.vpng
 
 Tunnelblick will show a warning:
 <blockquote>
-  This computer's apparent public IP address was not different after connecting to propertyguru-vpn-singapore. It is still W.X.Y.Z.
-  
-  This may mean that your VPN is not configured correctly.
+  This computer's apparent public IP address was not different after connecting to propertyguru-vpn-singapore. It is still W.X.Y.Z.  
+  This may mean that your VPN is not configured correctly.  
 </blockquote>
 This is because we don't route everything over the VPN, only the traffic which goes to our internal network, and some public IPs, which have source IP rules. So just select `Do not warn about this again for any configuration` and press `OK`.
 
@@ -70,21 +69,23 @@ This is because we don't route everything over the VPN, only the traffic which g
 4. Press the big plus icon on the bottom right to import the other file
 5. Choose `propertyguru-vpn-thailand.ovpn`
 6. Press `Add` at top right
-7. The `Profiles` window should look like this now:
-  ![](android_6_profiles_sg_th.jpg)
+7. The `Profiles` window should look like this now:  
+![](android_6_profiles_sg_th.jpg)
 
 ### OpenVPN Connect versions > 3.2.5
 The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
-> There was an error attempting to connect to the selected server.
-> Error message:
-> OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed
+<blockquote>
+  There was an error attempting to connect to the selected server.  
+  Error message:  
+  OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed  
+</blockquote>
 
 Screenshots:
 [1](https://pgurus.slack.com/archives/C04T54SDP/p1651051200728679?thread_ts=1651047053.232299&cid=C04T54SDP)
 [2](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653023480660299?thread_ts=1653023462.549749&cid=C03E2GR4C6Q)
 [3](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653445008939279)
 
-Downgrading to the 3.2.5 version works: [https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/](https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/)
+Downgrading to the 3.2.5 version works: [https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/](https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/).  
 Unfortunately also have to disable automatic updates for this app, otherwise it will get updated from the Play Store and the connection will fail again.
 
 ## Apple iOS phones
