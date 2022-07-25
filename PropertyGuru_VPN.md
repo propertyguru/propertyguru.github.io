@@ -76,10 +76,6 @@ This is because we don't route everything over the VPN, only the traffic which g
 ### OpenVPN Connect versions > 3.2.5
 The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
 <blockquote>
-  There was an error attempting to connect to the selected server.  
-  
-  Error message:  
-  
   OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed  
 </blockquote>
 
@@ -88,8 +84,7 @@ Screenshots:
 [2](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653023480660299?thread_ts=1653023462.549749&cid=C03E2GR4C6Q)
 [3](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1653445008939279)
 
-Downgrading to the 3.2.5 version works: [https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/](https://www.apkmirror.com/apk/openvpn/openvpn-connect/openvpn-connect-3-2-5-release/).  
-Unfortunately also have to disable automatic updates for this app, otherwise it will get updated from the Play Store and the connection will fail again.
+All VPN configs sent before 2022-07-26 have this problem. The previous recommendation was to downgrade the version from apkmirror.com. This is no longer needed. Please make sure to have the latest OpenVPN app and enable automatic updates. Contact us for fixed configuration, or if you are brave enough to edit text config files, [you can fix it yourself](https://pgurus.slack.com/archives/C03E2GR4C6Q/p1658742546907469).
 
 ## Apple iOS phones
 1. Download “[OpenVPN Connect](https://apps.apple.com/th/app/openvpn-connect/id590379981)” from the Appstore.
