@@ -76,7 +76,7 @@ This is because we don't route everything over the VPN, only the traffic which g
 ### OpenVPN Connect versions > 3.2.5
 The latest OpenVPN Connect app versions 3.2.6 and 3.2.7 have a problem connecting where they show the following error message:
 <blockquote>
-  OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routenes:tls_process_server_certificate:certificate verify failed  
+  OpenSSLContext::SSL::read_cleartext: BIO_read failed, cap=2576 status=-1: error:1416F086:SSL routines:tls_process_server_certificate:certificate verify failed
 </blockquote>
 
 Screenshots:
